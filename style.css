@@ -55,30 +55,33 @@ h1 {
 }
 
 h1 {
-  font-size: clamp(1.6rem, 4vw, 3rem); /* responsive: smaller on mobile, larger on desktop */
+  font-size: 1.5rem; /* fixed smaller size for mobile */
   line-height: 1.1;
   margin: 0;
-  white-space: nowrap; /* force single line */
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal; /* allow wrapping only if extremely necessary */
   text-align: center;
+  overflow: visible;
+}
+@media (min-width: 480px) {
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 3rem); /* desktop scaling */
+    white-space: nowrap; /* desktop single line */
+  }
 }
 
-/* Subtitle adjustments */
+
 #typing {
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
-  max-width: 90%;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  max-width: 95%;
   margin: 0.4rem auto 0 auto;
-  white-space: normal; /* allow line wrap if needed */
-  overflow: visible;
   text-align: center;
+  white-space: normal; /* allow wrapping if needed */
+  overflow: visible;
 }
+
 
 /* Mobile tweaks */
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.6rem; /* small enough to fit single line */
-  }
   #typing {
     font-size: 0.95rem;
     max-width: 95%; /* ensure it fits on screen */
