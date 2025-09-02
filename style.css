@@ -47,6 +47,35 @@ h1 {
   margin: 0.4rem auto 0 auto;
   white-space: normal;
   overflow: visible;
+}/* Main title adjustments */
+h1 {
+  font-size: clamp(1.6rem, 4vw, 3rem); /* responsive: smaller on mobile, larger on desktop */
+  line-height: 1.1;
+  margin: 0;
+  white-space: nowrap; /* force single line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+/* Subtitle adjustments */
+#typing {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  max-width: 90%;
+  margin: 0.4rem auto 0 auto;
+  white-space: normal; /* allow line wrap if needed */
+  overflow: visible;
+  text-align: center;
+}
+
+/* Mobile specific tweaks */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem; /* ensure fits single line */
+  }
+  #typing {
+    font-size: 1rem; /* visible immediately below title */
+  }
 }
 
 /* Buttons */
