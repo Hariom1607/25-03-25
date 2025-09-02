@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, My Love ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="hero">
+    <h1>🎂 Happy Birthday, <span id="name">My Love</span> 🎂</h1>
+    <p id="typing" data-text="You make my world brighter every single day. I’m so lucky to have you. ❤️"></p>
+
+    <div class="cta">
+      <button id="startBtn" class="btn">Start the magic ✨</button>
+    </div>
+
+    <!-- Candles + Cake (hidden by default; replaced old simple candles with a nicer cake+candles,
+         but the container keeps the original id "candles" so existing JS remains compatible) -->
+    <div id="candles" class="candles" aria-hidden="true">
+      <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-bottom"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+
+        <div class="cake-candles">
+          <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+          <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+          <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Slideshow -->
+    <div class="slideshow">
+      <div class="slides fade">
+        <img src="assets/images/pic1.jpg" alt="Memory 1">
+        <div class="caption" data-text="✨ The Day When We Say YES to Forever ✨"></div>
+      </div>
+
+      <div class="slides fade">
+        <img src="assets/images/pic2.jpg" alt="Memory 2">
+        <div class="caption" data-text="🌸 Forever Together 🌸"></div>
+      </div>
+
+      <div class="slides fade">
+        <img src="assets/images/pic3.jpg" alt="Memory 3">
+        <div class="caption" data-text="💖 Our First Date 💖"></div>
+      </div>
+
+      <div class="slides fade">
+        <img src="assets/images/pic4.jpg" alt="Memory 4">
+        <div class="caption" data-text="💞 Our Adventure Begins 💞"></div>
+      </div>
+
+      <div class="slides fade">
+        <img src="assets/images/pic5.jpg" alt="Memory 5">
+        <div class="caption" data-text="🌹 Moments We Cherish 🌹"></div>
+      </div>
+
+      <div class="slides fade">
+        <img src="assets/images/pic6.jpg" alt="Memory 6">
+        <div class="caption" data-text="💌 Forever in My Heart 💌"></div>
+      </div>
+
+      <!-- navigation arrows -->
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+
+    <!-- Surprise Card -->
+    <div id="card-container">
+      <button id="openCardBtn" class="btn">Open Your Surprise 💌</button>
+
+      <div id="surpriseCard" class="card" role="dialog" aria-hidden="true">
+        <div class="card-content">
+          <h2>Happy Birthday, My Love! 🎉</h2>
+          <p>You make every day brighter, every moment sweeter, and every memory unforgettable. ❤️</p>
+          <p>Being with you is the best adventure of my life. 🌹✨</p>
+          <p>I promise to make you smile every single day. 💖</p>
+          <button id="closeCardBtn" class="btn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Falling petals layer -->
+    <div id="petals" aria-hidden="true"></div>
+
+    <!-- Balloon Surprise Messages -->
+    <div id="balloon-container"></div>
+    <div id="balloon-message" class="balloon-message" aria-hidden="true"></div>
+
+    <div class="hint">Tip: Click the button to play music, light candles & confetti.</div>
+  </main>
+
+  <!-- Optional background music: put your MP3 at assets/audio/song.mp3 -->
+  <audio id="bg-music" src="assets/audio/song.mp3" preload="auto"></audio>
+
+  <!-- Confetti (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
