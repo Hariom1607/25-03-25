@@ -21,13 +21,17 @@ body {
   -webkit-text-size-adjust: 100%; /* prevent iOS text zoom */
 }
 
-/* Hero container */
-/* HERO container adjustments for spacing */
+/* Hero container adjustments for mobile */
 .hero {
-  padding-top: 1.8rem; 
-  max-width: 480px; /* keeps content visible on small screens */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* top alignment */
   text-align: center;
-  gap: 1rem;
+  margin: 0 auto;
+  max-width: 95%; /* slightly increase width on mobile */
+  padding-top: 1.5rem; /* reduce top padding on small screens */
+  gap: 0.8rem; /* smaller gap for mobile so subtitle appears immediately */
 }
 
 /* Main title adjustments */
@@ -40,14 +44,16 @@ h1 {
   text-overflow: ellipsis;
 }
 
-/* Subtitle adjustments */
+/* Subtitle visible adjustments */
 #typing {
-  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-  max-width: 90%;
-  margin: 0.4rem auto 0 auto;
-  white-space: normal;
-  overflow: visible;
-}/* Main title adjustments */
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem); /* responsive and smaller for mobile */
+  max-width: 100%; /* full width */
+  margin: 0 auto;
+  white-space: normal; /* allow wrapping if needed */
+  overflow: visible; 
+  text-align: center;
+}
+
 h1 {
   font-size: clamp(1.6rem, 4vw, 3rem); /* responsive: smaller on mobile, larger on desktop */
   line-height: 1.1;
@@ -68,13 +74,14 @@ h1 {
   text-align: center;
 }
 
-/* Mobile specific tweaks */
+/* Mobile tweaks */
 @media (max-width: 480px) {
   h1 {
-    font-size: 1.8rem; /* ensure fits single line */
+    font-size: 1.6rem; /* small enough to fit single line */
   }
   #typing {
-    font-size: 1rem; /* visible immediately below title */
+    font-size: 0.95rem;
+    max-width: 95%; /* ensure it fits on screen */
   }
 }
 
