@@ -20,25 +20,44 @@ body {
   overflow-x: hidden;
 }
 
-/* Center the hero content */
+/* Hero container */
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* not fully centered, so top padding works */
   text-align: center;
   margin: 0 auto;
-  max-width: 500px; /* keeps content nicely sized */
+  max-width: 500px;
+  padding-top: 2.5rem; /* space from very top */
+  gap: 1.2rem; /* consistent spacing between children */
 }
 
-/* --- Responsive title fixes --- */
+
+/* Title */
 h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.05;
-  margin: 0 0 1.5rem 0; /* add space below title */
-  white-space: nowrap;   /* keep single line */
+  font-size: clamp(1.8rem, 6vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0; /* gap is handled by .hero */
   text-shadow: 0 6px 30px rgba(0,0,0,0.18);
   animation: glow 2.2s ease-in-out infinite alternate;
+  white-space: normal; /* allow wrapping naturally */
+}
+
+/* Buttons */
+.btn {
+  margin-top: 0.5rem;
+}
+
+/* On small screens give extra breathing room */
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 1.8rem;
+    gap: 1rem;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
 }
 
 @keyframes glow {
