@@ -12,26 +12,31 @@
     <h1>🎂 Happy Birthday, <span id="name">My Love</span> 🎂</h1>
     <p id="typing" data-text="You make my world brighter every single day. I’m so lucky to have you. ❤️"></p>
 
-    <div class="cta">
-      <button id="startBtn" class="btn">Start the magic ✨</button>
-    </div>
+   <!-- Cake -->
+<div id="candles" class="candles" aria-hidden="true">
+  <div class="cake">
+    <div class="layer layer-bottom"></div>
+    <div class="layer layer-middle"></div>
+    <div class="layer layer-top"></div>
 
-    <!-- Candles + Cake (hidden by default; replaced old simple candles with a nicer cake+candles,
-         but the container keeps the original id "candles" so existing JS remains compatible) -->
-    <div id="candles" class="candles" aria-hidden="true">
-      <div class="cake">
-        <div class="plate"></div>
-        <div class="layer layer-bottom"></div>
-        <div class="layer layer-middle"></div>
-        <div class="layer layer-top"></div>
-
-        <div class="cake-candles">
-          <div class="candle"><span class="wick"></span><span class="flame"></span></div>
-          <div class="candle"><span class="wick"></span><span class="flame"></span></div>
-          <div class="candle"><span class="wick"></span><span class="flame"></span></div>
-        </div>
-      </div>
+    <!-- Candles -->
+    <div class="cake-candles">
+      <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+      <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+      <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+      <div class="candle"><span class="wick"></span><span class="flame"></span></div>
+      <div class="candle"><span class="wick"></span><span class="flame"></span></div>
     </div>
+  </div>
+</div>
+
+<!-- Start Button -->
+<div class="cta">
+  <button id="startBtn" class="btn">Start the magic ✨</button>
+</div>
+
+
+
 
     <!-- Photo Slideshow -->
     <div class="slideshow">

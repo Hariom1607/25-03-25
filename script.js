@@ -225,21 +225,26 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('Add an MP3 at assets/audio/song.mp3 to enable background music.');
     }
 
-    // Show & light candles (container id kept as "candles" to minimize change)
     const candlesContainer = document.getElementById("candles");
-    if (candlesContainer) {
-      candlesContainer.style.display = "block";
-      candlesContainer.setAttribute('aria-hidden', 'false');
-      const flames = candlesContainer.querySelectorAll(".flame");
-      flames.forEach((flame, i) => {
-        // stagger lighting
-        setTimeout(() => {
-          flame.style.animation = "flicker 0.6s infinite";
-          flame.style.transform = "translateX(-50%) scale(1)";
-          flame.style.opacity = "1";
-        }, i * 500);
-      });
-    }
+
+startBtn?.addEventListener('click', async () => {
+
+  // Show cake + light candles
+  if (candlesContainer) {
+    candlesContainer.style.display = "block";
+    candlesContainer.setAttribute('aria-hidden', 'false');
+    const flames = candlesContainer.querySelectorAll(".flame");
+    flames.forEach((flame, i) => {
+      setTimeout(() => {
+        flame.style.transform = "translateX(-50%) scale(1)";
+        flame.style.opacity = "1";
+        flame.style.animation = "flicker 0.6s infinite";
+      }, i * 500);
+    });
+  }
+
+  // Play music and confetti (existing code)
+});
 
     // Auto burst all CURRENT balloons after a small delay
     setTimeout(() => {
@@ -264,4 +269,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // small float-keyframes (already in CSS)
   // nothing else to init here
+});
+
+const candlesContainer = document.getElementById("candles");
+
+startBtn?.addEventListener('click', async () => {
+  // Show cake + light candles
+  if (candlesContainer) {
+    candlesContainer.style.display = "block";
+    candlesContainer.setAttribute('aria-hidden', 'false');
+    const flames = candlesContainer.querySelectorAll(".flame");
+    flames.forEach((flame, i) => {
+      setTimeout(() => {
+        flame.style.transform = "translateX(-50%) scale(1)";
+        flame.style.opacity = "1";
+        flame.style.animation = "flicker 0.6s infinite";
+      }, i * 500);
+    });
+  }
 });
