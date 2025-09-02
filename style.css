@@ -32,20 +32,20 @@ body {
 
 /* Main title adjustments */
 h1 {
-  font-size: clamp(1.5rem, 4.5vw, 2.4rem); /* slightly smaller for mobile */
-  line-height: 1.2;
+  font-size: clamp(1.2rem, 3.5vw, 2rem); /* smaller min and max font size */
+  line-height: 1.1; /* reduce spacing between lines */
   margin: 0;
-  white-space: nowrap; /* keep single line */
-  text-overflow: ellipsis; /* prevent overflow */
+  white-space: nowrap; /* force single line */
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Subtitle adjustments (typewriter text) */
+/* Subtitle adjustments */
 #typing {
-  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-  max-width: 90%; /* allow more width on small screens */
-  margin: 0.5rem auto 0 auto;
-  white-space: normal; /* allow wrapping if needed */
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  max-width: 90%;
+  margin: 0.4rem auto 0 auto;
+  white-space: normal;
   overflow: visible;
 }
 
