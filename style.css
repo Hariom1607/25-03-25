@@ -1,4 +1,4 @@
-/* Basic, modern styling (kept original theme and fonts) */
+/* Global */
 :root {
   --bg1: #ff9a9e;
   --bg2: #fad0c4;
@@ -18,6 +18,7 @@ body {
   color: var(--text);
   background: linear-gradient(135deg, var(--bg1), var(--bg2));
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%; /* prevent iOS text zoom */
 }
 
 /* Hero container */
@@ -25,126 +26,63 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* not fully centered, so top padding works */
+  justify-content: flex-start;
   text-align: center;
   margin: 0 auto;
   max-width: 500px;
-  padding-top: 2.5rem; /* space from very top */
-  gap: 1.2rem; /* consistent spacing between children */
+  padding: 2rem 1rem; /* balanced padding */
+  gap: 1.2rem;
 }
-
 
 /* Title */
 h1 {
   font-size: clamp(1.8rem, 6vw, 3.5rem);
-  line-height: 1.1;
-  margin: 0; /* gap is handled by .hero */
+  line-height: 1.2;
+  margin: 0;
   text-shadow: 0 6px 30px rgba(0,0,0,0.18);
   animation: glow 2.2s ease-in-out infinite alternate;
-  white-space: normal; /* allow wrapping naturally */
+  white-space: normal;
+  word-break: break-word;
 }
 
-/* Buttons */
-.btn {
-  margin-top: 0.5rem;
-}
-
-/* On small screens give extra breathing room */
-@media (max-width: 480px) {
-  .hero {
-    padding-top: 1.8rem;
-    gap: 1rem;
-  }
-  h1 {
-    font-size: clamp(1.6rem, 7vw, 2.4rem);
-  }
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px #fff, 0 0 22px #ff69b4; }
-  to   { text-shadow: 0 0 18px #ffe1ec, 0 0 36px #ff1493; }
-}
-
+/* Paragraph typing effect */
 #typing {
   font-weight: 300;
-  max-width: 60ch;
+  max-width: 65ch;
   margin: 0 auto;
-  font-size: clamp(1.05rem, 2.4vw, 1.2rem);
+  font-size: clamp(1rem, 3vw, 1.2rem);
   border-right: 2px solid rgba(255,255,255,0.8);
   white-space: nowrap;
   overflow: hidden;
   width: 0;
 }
 
-.cta { margin: 0.6rem 0 0.2rem; }
-
+/* Buttons */
 .btn {
   appearance: none;
   border: 0;
   background: var(--btn);
   color: var(--btnText);
-  padding: 0.7rem 1rem;
+  padding: 0.7rem 1.2rem;
   font-weight: 700;
   border-radius: 999px;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 3.2vw, 1.05rem);
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease;
+  margin-top: 0.5rem;
 }
-
 .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(0,0,0,0.18); }
 .btn:active { transform: translateY(0); }
 
-.hint {
-  opacity: 0.85;
-  font-size: 0.9rem;
-  margin-top: 0.6rem;
-}
-
-/* Floating hearts (pointer) */
-.heart {
-  position: fixed;
-  width: 16px;
-  height: 16px;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  animation: floatUp 1.6s linear forwards;
-  z-index: 60;
-}
-.heart::before, .heart::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: #fff;
-  border-radius: 50%;
-}
-.heart::before { left: 0; }
-.heart::after { top: 0; }
-.heart { background: #fff; transform: rotate(45deg); }
-.heart::before { transform: translate(-50%, 0); }
-.heart::after { transform: translate(0, -50%); }
-
-@keyframes floatUp {
-  0%   { opacity: 1; transform: translate(-50%, -50%) scale(0.9) rotate(45deg); }
-  100% { opacity: 0; transform: translate(-50%, -220%) scale(1.2) rotate(45deg); }
-}
-
-/* --- Alignment fixes --- */
-
-/* --- Balanced spacing for main blocks --- */
+/* Slideshow */
 .slideshow {
-  margin: 1.5rem auto; /* spacing around slideshow */
+  margin: 1.5rem auto;
   text-align: center;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
 }
-
-/* Ensure button sits directly under slideshow and centered */
-.hero .btn {
-  display: block;
-  margin: 1rem auto 0 auto;
-}
-
-
 .slides {
   display: none;
   width: 100%;
@@ -153,34 +91,22 @@ h1 {
 .slides img {
   width: 100%;
   height: auto;
-  display: block;
   border-radius: 12px;
   object-fit: cover;
 }
-
-/* position arrows */
-.prev { left: -25px; } 
-.next { right: -25px; }
-
-/* caption */
 .caption {
   position: absolute;
-  bottom: 8px;
-  width: 90%;
+  bottom: 6px;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
-  font-size: 1rem;
-  color: #fff;
+  width: 90%;
+  font-size: clamp(0.8rem, 2.5vw, 1rem);
   background: rgba(0,0,0,0.35);
-  padding: 0.4rem 0.6rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 8px;
-  font-weight: 500;
-  line-height: 1.3;
-  white-space: normal;
 }
 
-/* arrows */
+/* Slideshow arrows */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -188,27 +114,13 @@ h1 {
   transform: translateY(-50%);
   padding: 0.5rem;
   color: white;
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: bold;
   user-select: none;
   z-index: 3;
 }
-
-/* slide fade */
-.fade { animation: fade 1s ease-in-out; }
-@keyframes fade { from { opacity: 0.4; } to { opacity: 1; } }
-
-/* responsive */
-@media (max-width: 768px) {
-  .slideshow { height: 280px; }
-  .caption { font-size: 0.95rem; bottom: 8px; padding: 0.3rem 0.5rem; }
-  .prev, .next { font-size: 1.2rem; }
-}
-@media (max-width: 480px) {
-  .slideshow { height: 220px; }
-  .caption { font-size: 0.85rem; bottom: 6px; padding: 0.25rem 0.4rem; }
-  .prev, .next { font-size: 1rem; }
-}
+.prev { left: 0; }
+.next { right: 0; }
 
 /* Surprise Card */
 #surpriseCard {
@@ -216,235 +128,34 @@ h1 {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 90%;
+  width: 92%;
   max-width: 420px;
   background: #fff0f5;
   border-radius: 16px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.3);
   z-index: 999;
-  padding: 2rem;
+  padding: 1.5rem;
   color: #e11d48;
   text-align: center;
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
 }
 
-/* floating hearts in card */
-.heart-card {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: #ff4b69;
-  transform: rotate(45deg);
-  animation: floatUp 2s ease-out forwards;
-}
-.heart-card::before, .heart-card::after {
-  content: "";
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  background: #ff4b69;
-  border-radius: 50%;
-}
-.heart-card::before { left: 0; }
-.heart-card::after { top: 0; }
-
-/* ballon container & styling */
-#balloon-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-}
-.balloon {
-  position: absolute;
-  width: 50px;
-  height: 70px;
-  border-radius: 50%;
-  cursor: pointer;
-  pointer-events: auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transition: transform 0.3s, opacity 0.3s;
-}
-.balloon:after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  width: 2px;
-  height: 10px;
-  background: #fff;
-  transform: translateX(-50%);
-}
-
-/* burst */
-.burst {
-  animation: burstAnim 0.5s forwards;
-}
-@keyframes burstAnim {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.8; }
-  100% { transform: scale(0); opacity: 0; }
-}
-
-/* message near balloon */
-.balloon-message {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  background: rgba(255,255,255,0.95);
-  color: #e11d48;
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  text-align: center;
-  z-index: 999;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-/* particle styling (burst) */
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  pointer-events: none;
-  opacity: 1;
-  animation: particleAnim 0.8s forwards;
-}
-@keyframes particleAnim {
-  0% { transform: translate(0,0) scale(1); opacity: 1; }
-  100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
-}
-
-/* --- Candles + cake (hidden until Start) --- */
-#candles {
-  display: none; /* show only when start clicked */
-  justify-content: center;
-  margin: 0.75rem auto;
-  z-index: 5;
-}
+/* Cake */
 .cake {
-  position: relative;
+  width: clamp(160px, 50vw, 240px);
+  height: auto;
   margin: 0 auto;
-  width: 240px;
-  height: 170px;
-}
-.plate {
-  width: 280px;
-  height: 28px;
-  background: #fff;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-}
-.layer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 220px;
-  height: 56px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, #ffdbe6 0%, #ff7fb0 100%);
-  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.15);
-}
-.layer-bottom { bottom: 0; width:220px; }
-.layer-middle { bottom: 56px; width:200px; }
-.layer-top { bottom: 104px; width:170px; }
-
-.cake-candles {
-  display: flex;
-  gap: 1.1rem;
-  justify-content: center;
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.candle {
-  width: 14px;
-  height: 42px;
-  border-radius: 4px;
-  background: repeating-linear-gradient(
-    to bottom,
-    #fff,
-    #fff 6px,
-    #ff4b69 6px,
-    #ff4b69 12px
-  );
-  position: relative;
-  box-shadow: inset 0 -3px 6px rgba(0,0,0,0.12);
-}
-.candle .wick {
-  position: absolute;
-  top: -4px;
-  left: 50%;
-  width: 2px;
-  height: 6px;
-  background: #222;
-  transform: translateX(-50%);
-  border-radius: 2px;
-  z-index: 4;
-}
-.flame {
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  width: 12px;
-  height: 18px;
-  background: radial-gradient(circle, #ffec85 0%, #ffae34 60%, #ff6b00 100%);
-  border-radius: 50% 50% 45% 45%;
-  transform-origin: 50% 70%;
-  transform: translateX(-50%) scale(0);
-  opacity: 0;
-  filter: drop-shadow(0 6px 14px rgba(255,120,120,0.2));
-  z-index: 5;
 }
 
-/* flame flicker animation */
-@keyframes flicker {
-  0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
-  50%      { transform: translateX(-52%) scale(1.08); opacity: 0.9; }
+/* Responsive overrides */
+@media (max-width: 768px) {
+  .hero { padding: 1.8rem 1rem; }
+  .slideshow { margin: 1rem auto; }
 }
-
-/* --- Falling Petals --- */
-#petals {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
-}
-.petal {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  background: radial-gradient(circle at 30% 30%, #ff8fa3, #e11d48);
-  border-radius: 50% 50% 50% 50%;
-  opacity: 0.9;
-  animation: fall 10s linear forwards;
-}
-@keyframes fall {
-  0%   { transform: translateY(-10%) rotate(0deg); opacity: 0.95; }
-  100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-}
-
-/* small adjustments so the cake sits under the title visually comfortable on small screens */
 @media (max-width: 480px) {
-  .cake { width: 180px; height: 130px; }
-  .layer { height: 46px; }
-  .cake-candles { gap: 0.6rem; top: 6px; }
+  .hero { padding: 1.5rem 0.8rem; gap: 1rem; }
+  h1 { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+  .btn { width: 100%; max-width: 280px; }
+  .slideshow { max-width: 100%; }
 }
